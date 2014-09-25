@@ -14,7 +14,7 @@ var firstReverse = function(str){
 	return finalArray;
 }
 
-
+////////////////////////////////////
 var swapCase = function (str) {
 	var arr = str.split('');
 	var finalWord = [];
@@ -28,5 +28,23 @@ var swapCase = function (str) {
 	}
 	finalWord = finalWord.join('');
 	return finalWord;
-
 }
+//////////////////////////////////////
+var letterCount = function(str) {
+	var splitToWords = str.split(' ');
+	console.log(splitToWords);
+
+
+	for(var i = 0; i < splitToWords.length; i++) {
+
+		var currentPalabra = splitToWords[i];
+		console.log(currentPalabra);
+
+		for(var j = 0; j < currentPalabra.length; j++) {
+			
+			var letterPool = [];
+			var currentLetra = currentPalabra[j];
+			console.log(currentLetra);
+		};
+	};
+};
