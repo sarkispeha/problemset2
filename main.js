@@ -30,32 +30,32 @@ var swapCase = function (str) {
 	return finalWord;
 }
 //////////////////////////////////////
-var letterCount = function(str) {
-	var splitToWords = str.split(' ');
-	// console.log(splitToWords);
+// var letterCount = function(str) {
+// 	var splitToWords = str.split(' ');
+// 	// console.log(splitToWords);
 
-	for(var i = 0; i < splitToWords.length; i++) {
+// 	for(var i = 0; i < splitToWords.length; i++) {
 
-		var currentPalabra = splitToWords[i];
-		// console.log(currentPalabra);
-		var letterPool = [];
-		var multipleLetWrdPool = [];
-		var mostLetrWord = '';
+// 		var currentPalabra = splitToWords[i];
+// 		// console.log(currentPalabra);
+// 		var letterPool = [];
+// 		var multipleLetWrdPool = [];
+// 		var mostLetrWord = '';
 
-		for(var j = 0; j < currentPalabra.length; j++) {
+// 		for(var j = 0; j < currentPalabra.length; j++) {
 			
-			var currentLetra = currentPalabra[j];
-			// console.log(currentLetra);
-			if (letterPool.indexOf(currentLetra) === -1) {
-				letterPool.push(currentLetra);
-				// console.log(letterPool);
-			}else{
-				// console.log(currentPalabra);
-				multipleLetWrdPool.push(currentPalabra);
-				console.log(multipleLetWrdPool);
+// 			var currentLetra = currentPalabra[j];
+// 			// console.log(currentLetra);
+// 			if (letterPool.indexOf(currentLetra) === -1) {
+// 				letterPool.push(currentLetra);
+// 				// console.log(letterPool);
+// 			}else{
+// 				// console.log(currentPalabra);
+// 				multipleLetWrdPool.push(currentPalabra);
+// 				console.log(multipleLetWrdPool);
 
-			}
-		};
+// 			}
+// 		};
 		// for(var k = 0; k < multipleLetWrdPool.length; k++) {
 		// 	var mostLetters = 0;
 		// 	// var mostLetrWord = '';
@@ -66,8 +66,48 @@ var letterCount = function(str) {
 		// 	}
 		// }
 		// console.log(mostLetters);
+// 	};
+
+// };
+
+
+
+
+var letterCount = function(str) {
+	var splitToWords = str.split(' ');
+	var maxWrd = '';
+	var maxLetr = 0;
+	var wordTally = [];
+
+	for(var i = 0; i < splitToWords.length; i++) {
+
+		var currentWord = splitToWords[i];
+		var wordTotals = {};
 		
 
-	};
+		for(var j = 0; j < currentWord.length; j++) {
+			var currentLetter = currentWord[j];
 
-};
+			if(!(currentLetter in wordTotals)) {
+				wordTotals[currentLetter] = 0;
+			} 
+			wordTotals[currentLetter] ++;
+		}
+
+			wordTally.push(wordTotals);
+
+	}
+	for (var k = 0; k < wordTally.length; k++) {
+		// console.log(wordTally[k]); 
+		for (var l in wordTally[k]) {
+			if( wordTally[k][l] > maxLetr) {
+				maxLetr = wordTally[k][l];
+				maxWrd = splitToWords[k];
+
+			}
+		}
+	} return maxWrd;
+
+}
+
+
